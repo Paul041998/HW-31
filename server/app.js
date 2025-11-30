@@ -38,9 +38,7 @@ app.delete("/projects/:projectId", (request, response) => {
   if (projectIndex === -1) {
     return response.status(404).json({ message: "Project not found" });
   }
-  // Remove project
   const [deleted] = projectsMock.splice(projectIndex, 1);
-  // Remove tasks which belong to deleted project
   for (let i = tasksData.length - 1; i >= 0; i--) {
     if (tasksData[i].projectId === projectId) {
       tasksData.splice(i, 1);
