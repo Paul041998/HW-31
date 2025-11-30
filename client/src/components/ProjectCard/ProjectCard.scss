@@ -12,7 +12,12 @@
   flex-direction: column;
   gap: 10px;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(47, 47, 78, 0.12);
+    transform: translateY(-4px);
+  }
 }
 .ProjectCard__actions {
   margin-top: 12px;
@@ -36,10 +41,7 @@
   border-left: 6px solid #2980b9;
 }
 
-.ProjectCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(47, 47, 78, 0.12);
-}
+
 
 .ProjectCard h3 {
   margin: 0;

@@ -1,6 +1,17 @@
 @use "../../styles/variables" as *;
 .TasksPage {
   max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.TasksPage__controls {
+  width: 100%;
+}
+
+.TasksPage__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;

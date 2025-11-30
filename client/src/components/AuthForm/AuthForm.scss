@@ -8,6 +8,16 @@
 }
 .AuthForm button {
   padding: 6px 8px;
+  transition: 0.2s ease;
+}
+
+.Logout_btn {
+  background-color: red;
+  color: white;
+
+  &:hover {
+    background-color: darkred;
+  }
 }
 
 .AuthForm input[type="password"] {

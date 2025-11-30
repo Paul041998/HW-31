@@ -7,16 +7,7 @@ const initialState = {
   loaded: false,
 };
 
-/*
-  project: {
-    id: string,
-    title: string,
-    priority: string,
-    descrition: string,
-  }
 
-  CRUD
-*/
 
 const PROJECTS_URL = "http://localhost:3000/projects";
 
@@ -36,6 +27,14 @@ export const saveProjectAsync = createAsyncThunk(
   }
 );
 
+export const updateProjectAsync = createAsyncThunk(
+  "projects/update",
+  async ({ id, updates }) => {
+    const result = await axios.patch(`${PROJECTS_URL}/${id}`, updates);
+    return result.data;
+  }
+);
+
 export const deleteProjectAsync = createAsyncThunk(
   "projects/delete",
   async (projectId) => {
@@ -48,20 +47,6 @@ const projectsSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
-    // addProject: (state, action) => {
-    //   // generate id
-    //   // if integer needed:
-    //   // const id = Date.now();
-    //   const id = uuidv4(); // each time - new unique id
-
-    //   // add to store
-    //   const newProject = {
-    //     id,
-    //     ...action.payload,
-    //   };
-
-    //   state.data.push(newProject);
-    // }
     clearSaved: (state) => {
       state.loaded = false;
     },
@@ -73,9 +58,17 @@ const projectsSlice = createSlice({
 
     builder.addCase(saveProjectAsync.fulfilled, (state, action) => {
       state.loaded = true;
-      // add saved project to current list so the UI shows it immediately
       state.data.push(action.payload);
     });
+    
+    builder .addCase(updateProjectAsync.fulfilled, (state, action) => {
+        const updatedProject = action.payload;
+        const index = state.data.findIndex((p) => p.id === updatedProject.id);
+        if (index !== -1) {
+          state.data[index] = updatedProject;  
+        }
+      })
+
     builder.addCase(deleteProjectAsync.fulfilled, (state, action) => {
       const deleted = action.payload;
       state.data = state.data.filter((p) => p.id !== deleted.id);

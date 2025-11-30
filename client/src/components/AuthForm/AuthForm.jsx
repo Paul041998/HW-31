@@ -26,7 +26,7 @@ export default function AuthForm() {
     return (
       <div className="AuthForm">
         <span>Welcome, {user?.name}</span>
-        <button type="button" onClick={handleLogout}>
+        <button type="button" className="Logout_btn" onClick={handleLogout}>
           Logout
         </button>
       </div>

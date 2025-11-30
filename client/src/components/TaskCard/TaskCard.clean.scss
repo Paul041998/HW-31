@@ -10,6 +10,13 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(47, 47, 78, 0.1);
+    transform: translateY(-4px);
+    cursor: pointer;
+  }
 }
 
 .TaskCard h3 {
