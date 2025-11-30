@@ -1,0 +1,15 @@
+.AuthForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.AuthForm input {
+  padding: 6px 8px;
+}
+.AuthForm button {
+  padding: 6px 8px;
+}
+
+.AuthForm input[type="password"] {
+  -webkit-text-security: disc;
+}

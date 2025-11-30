@@ -1,0 +1,22 @@
+@use "../../styles/variables" as *;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: $text;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+nav ul li a:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+nav ul li a.active {
+  background: $primary;
+  color: #fff;
+}

@@ -1,0 +1,28 @@
+.PriorityLabel {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.PriorityLabel_HIGH {
+  background: #fdecea;
+  color: #c0392b;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.PriorityLabel_MEDIUM {
+  background: #fff4e6;
+  color: #d35400;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.PriorityLabel_LOW {
+  background: #eaf4fb;
+  color: #2a71b0;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}

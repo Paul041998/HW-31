@@ -1,0 +1,25 @@
+@use "../../styles/variables" as *;
+
+.MainPage {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MainPage__card {
+  width: 100%;
+  max-width: 900px;
+  background: $card-bg;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 8px 20px rgba(47, 47, 78, 0.06);
+  text-align: left;
+}
+
+.MainPage__card h1 {
+  margin: 0 0 8px;
+}
+.MainPage__card p {
+  color: $muted;
+}

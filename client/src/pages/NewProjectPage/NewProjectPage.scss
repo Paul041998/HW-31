@@ -1,0 +1,33 @@
+@use "../../styles/variables" as *;
+
+.NewProjectPage form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 640px;
+}
+.NewProjectPage input,
+.NewProjectPage textarea,
+.NewProjectPage select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.NewProjectPage button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.NewProjectPage {
+  padding-top: 16px;
+}
+.NewProjectPage h1 {
+  margin-bottom: 8px;
+}
+.NewProjectPage form > div {
+  display: block;
+}

@@ -1,0 +1,29 @@
+@use "../../styles/variables" as *;
+
+.ProjectsPage {
+  padding-top: 24px;
+}
+.ProjectsPage__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ProjectsPage button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.ProjectsPage button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.Projects {
+  margin-top: 30px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
