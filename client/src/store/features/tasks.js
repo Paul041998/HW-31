@@ -24,7 +24,7 @@ export const saveTaskAsync = createAsyncThunk("tasks/save", async (task) => {
 export const updateTaskAsync = createAsyncThunk(
   "tasks/update",
   async ({ id, updates }) => {
-    const result = await axios.patch(`${TASK_URL}/${id}`, updates);
+    const result = await axios.patch(`${TASKS_URL}/${id}`, updates);
     return result.data;
   }
 );
