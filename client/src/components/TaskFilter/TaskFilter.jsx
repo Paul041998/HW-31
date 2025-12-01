@@ -4,12 +4,7 @@ import "./TaskFilter.scss";
 export default function TaskFilters({ search, setSearch, sortBy, setSortBy }) {
   return (
     <div className="TaskFilters">
-      <input
-        type="text"
-        placeholder="Sort by..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+     
 
       <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
         <option value="">No sorting</option>
