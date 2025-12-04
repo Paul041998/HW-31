@@ -1,4 +1,6 @@
 import PriorityLabel from "../PriorityLabel/PriorityLabel";
+import { useNavigate } from "react-router";
+import { urls } from "../../common/menu";
 import "./ProjectCard.scss";
 
 export default function ProjectCard({
@@ -9,6 +11,8 @@ export default function ProjectCard({
   onClick,
   onDelete,
 }) {
+  const navigate = useNavigate();
+
   const handleClick = () => {
     onClick && onClick(id);
   };
@@ -17,6 +21,12 @@ export default function ProjectCard({
     e.stopPropagation();
     onDelete && onDelete(id);
   };
+
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    navigate(`${urls.EDIT_PROJECT_URL}/${id}`);
+  };
+
   return (
     <div
       className={`ProjectCard ProjectCard--${priority}`}
@@ -30,6 +40,9 @@ export default function ProjectCard({
       </div>
       <p>{description}</p>
       <div className="ProjectCard__actions">
+        <button type="button" onClick={handleEdit}>
+          Edit
+        </button>
         <button type="button" onClick={handleDelete}>
           Delete
         </button>

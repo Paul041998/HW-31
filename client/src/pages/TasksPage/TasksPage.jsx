@@ -4,7 +4,7 @@ import "./TasksPage.scss";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import TaskFilters from "../../components/TaskFilter/TaskFilter";
 import { useEffect, useState, useMemo } from "react";
-import { getTasksAsync } from "../../store/features/tasks";
+import { getTasksAsync, deleteTaskAsync } from "../../store/features/tasks";
 
 export default function TasksPage() {
   const { data: tasks } = useSelector((state) => state.tasks);
@@ -20,6 +20,12 @@ export default function TasksPage() {
     if (!isLoggedIn) return;
     dispatch(getTasksAsync(projectId));
   }, [dispatch, projectId, isLoggedIn]);
+
+  const handleDeleteTask = (taskId) => {
+    if (confirm("Are you sure you want to delete this task?")) {
+      dispatch(deleteTaskAsync(taskId));
+    }
+  };
 
   const filteredTasks = useMemo(() => {
     if (!tasks) return [];
@@ -65,7 +71,7 @@ export default function TasksPage() {
       <div className="TasksPage__grid">
         {filteredTasks.length === 0 && <span>No tasks available</span>}
         {filteredTasks.map((task) => (
-          <TaskCard key={task.id} {...task} />
+          <TaskCard key={task.id} {...task} onDelete={handleDeleteTask} />
         ))}
       </div>
     </div>

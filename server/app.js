@@ -47,6 +47,54 @@ app.delete("/projects/:projectId", (request, response) => {
   return response.json(deleted);
 });
 
+app.patch("/projects/:projectId", (request, response) => {
+  const { projectId } = request.params;
+  const updates = request.body;
+  const projectIndex = projectsMock.findIndex((p) => p.id === projectId);
+  if (projectIndex === -1) {
+    return response.status(404).json({ message: "Project not found" });
+  }
+  projectsMock[projectIndex] = {
+    ...projectsMock[projectIndex],
+    ...updates,
+  };
+  return response.json(projectsMock[projectIndex]);
+});
+
+app.post("/tasks", (request, response) => {
+  const data = request.body;
+  const newTask = {
+    id: uuidv4(),
+    ...data,
+  };
+  tasksData.push(newTask);
+  return response.json(newTask);
+});
+
+app.patch("/tasks/:taskId", (request, response) => {
+  const { taskId } = request.params;
+  const updates = request.body;
+  const taskIndex = tasksData.findIndex((t) => t.id === taskId);
+  if (taskIndex === -1) {
+    return response.status(404).json({ message: "Task not found" });
+  }
+  tasksData[taskIndex] = {
+    ...tasksData[taskIndex],
+    ...updates,
+  };
+  return response.json(tasksData[taskIndex]);
+});
+
+app.delete("/tasks/:taskId", (request, response) => {
+  const { taskId } = request.params;
+  const taskIndex = tasksData.findIndex((t) => t.id === taskId);
+  if (taskIndex === -1) {
+    return response.status(404).json({ message: "Task not found" });
+  }
+  const [deleted] = tasksData.splice(taskIndex, 1);
+  return response.json(deleted);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
